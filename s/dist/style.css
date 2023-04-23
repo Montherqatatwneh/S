@@ -19,9 +19,8 @@
   display: table;
 }
 #count-down li {
-  float: left;
   padding: 4px;
-  position: relative;
+  position: center;
   text-align: center;
   width: 8%;
 }
