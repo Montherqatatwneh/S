@@ -8,9 +8,7 @@
 #count-down{
  font-size: 10px;
  ul{
-  display: block;
   list-style: none outside none;
-  margin: 0 auto;
   padding: 0;
   &:after{
    clear: both;
@@ -19,17 +17,17 @@
   }
  }
  li{
+  float: left;
   padding: 4px;
-  position: center;
+  position: relative;
   text-align: center;
   width: 8%;
  }
  div{
-  background: #ccc;
   @include border-radius(3px);
   font-size: 30px;
   line-height: 30px;
-  padding: 1em;
+  padding: 30px;
   position: relative;
   &:after{
    content: " " attr(data-interval-text);
@@ -64,7 +62,7 @@ $blue: #3498db;
 $green: #28b263;
 
 .wrapper{
- margin: 0 auto;
+
  width: 960px;
 }
 #count-down{
