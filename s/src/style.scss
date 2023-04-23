@@ -1,0 +1,102 @@
+@import "compass/css3";
+
+*{
+ &, &:before, &:after{
+  @include box-sizing(border-box);
+ }
+}
+#count-down{
+ font-size: 10px;
+ ul{
+  display: block;
+  list-style: none outside none;
+  margin: 0 auto;
+  padding: 0;
+  &:after{
+   clear: both;
+   content: "";
+   display: table;
+  }
+ }
+ li{
+  float: left;
+  padding: 4px;
+  position: relative;
+  text-align: center;
+  width: 8%;
+ }
+ div{
+  background: #ccc;
+  @include border-radius(3px);
+  font-size: 30px;
+  line-height: 30px;
+  padding: 1em;
+  position: relative;
+  &:after{
+   content: " " attr(data-interval-text);
+   display: inline-block;
+   position: relative;
+  }
+ }
+}
+
+
+
+
+
+
+
+
+
+
+/* demo code only. */
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 200 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+@mixin long-text-shadow($color) {
+  text-shadow: makelongshadow($color);
+}
+
+$blue: #3498db;
+$green: #28b263;
+
+.wrapper{
+ margin: 0 auto;
+ width: 960px;
+}
+#count-down{
+ font-size: 90px;
+ div{
+  background: $blue;
+  @include border-radius(50%);
+  color: #fff;
+  font-weight: bold;
+  overflow: hidden;
+  margin: 30px 0;
+  padding: .75em .25em;
+  @include transition(all 1s ease-in-out);
+  @include long-text-shadow(darken($blue, 6%));
+  &:after{
+   bottom: .1em;
+   font-size: .35em;
+   font-weight: normal;
+   left: 50%;
+   margin-left: -2em;
+   position: absolute;
+   width: 4em;
+   @include long-text-shadow(darken($blue, 10%));
+   @include transition(all 1s ease-in-out);
+  }
+  &[data-interval-text="day"], &[data-interval-text="hr"], &[data-interval-text="min"], &[data-interval-text="sec"]{
+   background: $green;
+   @include long-text-shadow(darken($green, 6%));
+   &:after{
+    @include long-text-shadow(darken($green, 10%));
+   }
+  }
+ }
+}
