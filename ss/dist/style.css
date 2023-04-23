@@ -1,89 +1,102 @@
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+@import "compass/css3";
 
-#count-down {
-  font-size: 20px;
+*{
+ &, &:before, &:after{
+  @include box-sizing(border-box);
+ }
 }
-#count-down ul {
+#count-down{
+ font-size: 10px;
+ ul{
   display: block;
   list-style: none outside none;
   margin: 0 auto;
   padding: 0;
-}
-#count-down ul:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-#count-down li {
+  &:after{
+   clear: both;
+   content: "";
+   display: table;
+  }
+ }
+ li{
   float: left;
-  padding: 0 10px;
+  padding: 4px;
   position: relative;
   text-align: center;
-  width: 25%;
-}
-#count-down div {
+  width: 8%;
+ }
+ div{
   background: #ccc;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  font-size: 1em;
-  line-height: 1em;
+  @include border-radius(3px);
+  font-size: 30px;
+  line-height: 30px;
   padding: 1em;
   position: relative;
+  &:after{
+   content: " " attr(data-interval-text);
+   display: inline-block;
+   position: relative;
+  }
+ }
 }
-#count-down div:after {
-  content: " " attr(data-interval-text);
-  display: inline-block;
-  position: relative;
-}
+
+
+
+
+
+
+
+
+
 
 /* demo code only. */
-.wrapper {
-  margin: 0 auto;
-  width: 960px;
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 200 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+@mixin long-text-shadow($color) {
+  text-shadow: makelongshadow($color);
 }
 
-#count-down {
-  font-size: 90px;
+$blue: #3498db;
+$green: #28b263;
+
+.wrapper{
+ margin: 0 auto;
+ width: 960px;
 }
-#count-down div {
-  background: #3498db;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+#count-down{
+ font-size: 90px;
+ div{
+  background: $blue;
+  @include border-radius(50%);
   color: #fff;
   font-weight: bold;
   overflow: hidden;
   margin: 30px 0;
   padding: .75em .25em;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-  text-shadow: 0px 0px #2489cc, 1px 1px #2489cc, 2px 2px #2489cc, 3px 3px #2489cc, 4px 4px #2489cc, 5px 5px #2489cc, 6px 6px #2489cc, 7px 7px #2489cc, 8px 8px #2489cc, 9px 9px #2489cc, 10px 10px #2489cc, 11px 11px #2489cc, 12px 12px #2489cc, 13px 13px #2489cc, 14px 14px #2489cc, 15px 15px #2489cc, 16px 16px #2489cc, 17px 17px #2489cc, 18px 18px #2489cc, 19px 19px #2489cc, 20px 20px #2489cc, 21px 21px #2489cc, 22px 22px #2489cc, 23px 23px #2489cc, 24px 24px #2489cc, 25px 25px #2489cc, 26px 26px #2489cc, 27px 27px #2489cc, 28px 28px #2489cc, 29px 29px #2489cc, 30px 30px #2489cc, 31px 31px #2489cc, 32px 32px #2489cc, 33px 33px #2489cc, 34px 34px #2489cc, 35px 35px #2489cc, 36px 36px #2489cc, 37px 37px #2489cc, 38px 38px #2489cc, 39px 39px #2489cc, 40px 40px #2489cc, 41px 41px #2489cc, 42px 42px #2489cc, 43px 43px #2489cc, 44px 44px #2489cc, 45px 45px #2489cc, 46px 46px #2489cc, 47px 47px #2489cc, 48px 48px #2489cc, 49px 49px #2489cc, 50px 50px #2489cc, 51px 51px #2489cc, 52px 52px #2489cc, 53px 53px #2489cc, 54px 54px #2489cc, 55px 55px #2489cc, 56px 56px #2489cc, 57px 57px #2489cc, 58px 58px #2489cc, 59px 59px #2489cc, 60px 60px #2489cc, 61px 61px #2489cc, 62px 62px #2489cc, 63px 63px #2489cc, 64px 64px #2489cc, 65px 65px #2489cc, 66px 66px #2489cc, 67px 67px #2489cc, 68px 68px #2489cc, 69px 69px #2489cc, 70px 70px #2489cc, 71px 71px #2489cc, 72px 72px #2489cc, 73px 73px #2489cc, 74px 74px #2489cc, 75px 75px #2489cc, 76px 76px #2489cc, 77px 77px #2489cc, 78px 78px #2489cc, 79px 79px #2489cc, 80px 80px #2489cc, 81px 81px #2489cc, 82px 82px #2489cc, 83px 83px #2489cc, 84px 84px #2489cc, 85px 85px #2489cc, 86px 86px #2489cc, 87px 87px #2489cc, 88px 88px #2489cc, 89px 89px #2489cc, 90px 90px #2489cc, 91px 91px #2489cc, 92px 92px #2489cc, 93px 93px #2489cc, 94px 94px #2489cc, 95px 95px #2489cc, 96px 96px #2489cc, 97px 97px #2489cc, 98px 98px #2489cc, 99px 99px #2489cc, 100px 100px #2489cc, 101px 101px #2489cc, 102px 102px #2489cc, 103px 103px #2489cc, 104px 104px #2489cc, 105px 105px #2489cc, 106px 106px #2489cc, 107px 107px #2489cc, 108px 108px #2489cc, 109px 109px #2489cc, 110px 110px #2489cc, 111px 111px #2489cc, 112px 112px #2489cc, 113px 113px #2489cc, 114px 114px #2489cc, 115px 115px #2489cc, 116px 116px #2489cc, 117px 117px #2489cc, 118px 118px #2489cc, 119px 119px #2489cc, 120px 120px #2489cc, 121px 121px #2489cc, 122px 122px #2489cc, 123px 123px #2489cc, 124px 124px #2489cc, 125px 125px #2489cc, 126px 126px #2489cc, 127px 127px #2489cc, 128px 128px #2489cc, 129px 129px #2489cc, 130px 130px #2489cc, 131px 131px #2489cc, 132px 132px #2489cc, 133px 133px #2489cc, 134px 134px #2489cc, 135px 135px #2489cc, 136px 136px #2489cc, 137px 137px #2489cc, 138px 138px #2489cc, 139px 139px #2489cc, 140px 140px #2489cc, 141px 141px #2489cc, 142px 142px #2489cc, 143px 143px #2489cc, 144px 144px #2489cc, 145px 145px #2489cc, 146px 146px #2489cc, 147px 147px #2489cc, 148px 148px #2489cc, 149px 149px #2489cc, 150px 150px #2489cc, 151px 151px #2489cc, 152px 152px #2489cc, 153px 153px #2489cc, 154px 154px #2489cc, 155px 155px #2489cc, 156px 156px #2489cc, 157px 157px #2489cc, 158px 158px #2489cc, 159px 159px #2489cc, 160px 160px #2489cc, 161px 161px #2489cc, 162px 162px #2489cc, 163px 163px #2489cc, 164px 164px #2489cc, 165px 165px #2489cc, 166px 166px #2489cc, 167px 167px #2489cc, 168px 168px #2489cc, 169px 169px #2489cc, 170px 170px #2489cc, 171px 171px #2489cc, 172px 172px #2489cc, 173px 173px #2489cc, 174px 174px #2489cc, 175px 175px #2489cc, 176px 176px #2489cc, 177px 177px #2489cc, 178px 178px #2489cc, 179px 179px #2489cc, 180px 180px #2489cc, 181px 181px #2489cc, 182px 182px #2489cc, 183px 183px #2489cc, 184px 184px #2489cc, 185px 185px #2489cc, 186px 186px #2489cc, 187px 187px #2489cc, 188px 188px #2489cc, 189px 189px #2489cc, 190px 190px #2489cc, 191px 191px #2489cc, 192px 192px #2489cc, 193px 193px #2489cc, 194px 194px #2489cc, 195px 195px #2489cc, 196px 196px #2489cc, 197px 197px #2489cc, 198px 198px #2489cc, 199px 199px #2489cc, 200px 200px #2489cc;
-}
-#count-down div:after {
-  bottom: .1em;
-  font-size: .35em;
-  font-weight: normal;
-  left: 50%;
-  margin-left: -2em;
-  position: absolute;
-  width: 4em;
-  text-shadow: 0px 0px #217dbb, 1px 1px #217dbb, 2px 2px #217dbb, 3px 3px #217dbb, 4px 4px #217dbb, 5px 5px #217dbb, 6px 6px #217dbb, 7px 7px #217dbb, 8px 8px #217dbb, 9px 9px #217dbb, 10px 10px #217dbb, 11px 11px #217dbb, 12px 12px #217dbb, 13px 13px #217dbb, 14px 14px #217dbb, 15px 15px #217dbb, 16px 16px #217dbb, 17px 17px #217dbb, 18px 18px #217dbb, 19px 19px #217dbb, 20px 20px #217dbb, 21px 21px #217dbb, 22px 22px #217dbb, 23px 23px #217dbb, 24px 24px #217dbb, 25px 25px #217dbb, 26px 26px #217dbb, 27px 27px #217dbb, 28px 28px #217dbb, 29px 29px #217dbb, 30px 30px #217dbb, 31px 31px #217dbb, 32px 32px #217dbb, 33px 33px #217dbb, 34px 34px #217dbb, 35px 35px #217dbb, 36px 36px #217dbb, 37px 37px #217dbb, 38px 38px #217dbb, 39px 39px #217dbb, 40px 40px #217dbb, 41px 41px #217dbb, 42px 42px #217dbb, 43px 43px #217dbb, 44px 44px #217dbb, 45px 45px #217dbb, 46px 46px #217dbb, 47px 47px #217dbb, 48px 48px #217dbb, 49px 49px #217dbb, 50px 50px #217dbb, 51px 51px #217dbb, 52px 52px #217dbb, 53px 53px #217dbb, 54px 54px #217dbb, 55px 55px #217dbb, 56px 56px #217dbb, 57px 57px #217dbb, 58px 58px #217dbb, 59px 59px #217dbb, 60px 60px #217dbb, 61px 61px #217dbb, 62px 62px #217dbb, 63px 63px #217dbb, 64px 64px #217dbb, 65px 65px #217dbb, 66px 66px #217dbb, 67px 67px #217dbb, 68px 68px #217dbb, 69px 69px #217dbb, 70px 70px #217dbb, 71px 71px #217dbb, 72px 72px #217dbb, 73px 73px #217dbb, 74px 74px #217dbb, 75px 75px #217dbb, 76px 76px #217dbb, 77px 77px #217dbb, 78px 78px #217dbb, 79px 79px #217dbb, 80px 80px #217dbb, 81px 81px #217dbb, 82px 82px #217dbb, 83px 83px #217dbb, 84px 84px #217dbb, 85px 85px #217dbb, 86px 86px #217dbb, 87px 87px #217dbb, 88px 88px #217dbb, 89px 89px #217dbb, 90px 90px #217dbb, 91px 91px #217dbb, 92px 92px #217dbb, 93px 93px #217dbb, 94px 94px #217dbb, 95px 95px #217dbb, 96px 96px #217dbb, 97px 97px #217dbb, 98px 98px #217dbb, 99px 99px #217dbb, 100px 100px #217dbb, 101px 101px #217dbb, 102px 102px #217dbb, 103px 103px #217dbb, 104px 104px #217dbb, 105px 105px #217dbb, 106px 106px #217dbb, 107px 107px #217dbb, 108px 108px #217dbb, 109px 109px #217dbb, 110px 110px #217dbb, 111px 111px #217dbb, 112px 112px #217dbb, 113px 113px #217dbb, 114px 114px #217dbb, 115px 115px #217dbb, 116px 116px #217dbb, 117px 117px #217dbb, 118px 118px #217dbb, 119px 119px #217dbb, 120px 120px #217dbb, 121px 121px #217dbb, 122px 122px #217dbb, 123px 123px #217dbb, 124px 124px #217dbb, 125px 125px #217dbb, 126px 126px #217dbb, 127px 127px #217dbb, 128px 128px #217dbb, 129px 129px #217dbb, 130px 130px #217dbb, 131px 131px #217dbb, 132px 132px #217dbb, 133px 133px #217dbb, 134px 134px #217dbb, 135px 135px #217dbb, 136px 136px #217dbb, 137px 137px #217dbb, 138px 138px #217dbb, 139px 139px #217dbb, 140px 140px #217dbb, 141px 141px #217dbb, 142px 142px #217dbb, 143px 143px #217dbb, 144px 144px #217dbb, 145px 145px #217dbb, 146px 146px #217dbb, 147px 147px #217dbb, 148px 148px #217dbb, 149px 149px #217dbb, 150px 150px #217dbb, 151px 151px #217dbb, 152px 152px #217dbb, 153px 153px #217dbb, 154px 154px #217dbb, 155px 155px #217dbb, 156px 156px #217dbb, 157px 157px #217dbb, 158px 158px #217dbb, 159px 159px #217dbb, 160px 160px #217dbb, 161px 161px #217dbb, 162px 162px #217dbb, 163px 163px #217dbb, 164px 164px #217dbb, 165px 165px #217dbb, 166px 166px #217dbb, 167px 167px #217dbb, 168px 168px #217dbb, 169px 169px #217dbb, 170px 170px #217dbb, 171px 171px #217dbb, 172px 172px #217dbb, 173px 173px #217dbb, 174px 174px #217dbb, 175px 175px #217dbb, 176px 176px #217dbb, 177px 177px #217dbb, 178px 178px #217dbb, 179px 179px #217dbb, 180px 180px #217dbb, 181px 181px #217dbb, 182px 182px #217dbb, 183px 183px #217dbb, 184px 184px #217dbb, 185px 185px #217dbb, 186px 186px #217dbb, 187px 187px #217dbb, 188px 188px #217dbb, 189px 189px #217dbb, 190px 190px #217dbb, 191px 191px #217dbb, 192px 192px #217dbb, 193px 193px #217dbb, 194px 194px #217dbb, 195px 195px #217dbb, 196px 196px #217dbb, 197px 197px #217dbb, 198px 198px #217dbb, 199px 199px #217dbb, 200px 200px #217dbb;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-}
-#count-down div[data-interval-text="day"], #count-down div[data-interval-text="hr"], #count-down div[data-interval-text="min"], #count-down div[data-interval-text="sec"] {
-  background: #28b263;
-  text-shadow: 0px 0px #229955, 1px 1px #229955, 2px 2px #229955, 3px 3px #229955, 4px 4px #229955, 5px 5px #229955, 6px 6px #229955, 7px 7px #229955, 8px 8px #229955, 9px 9px #229955, 10px 10px #229955, 11px 11px #229955, 12px 12px #229955, 13px 13px #229955, 14px 14px #229955, 15px 15px #229955, 16px 16px #229955, 17px 17px #229955, 18px 18px #229955, 19px 19px #229955, 20px 20px #229955, 21px 21px #229955, 22px 22px #229955, 23px 23px #229955, 24px 24px #229955, 25px 25px #229955, 26px 26px #229955, 27px 27px #229955, 28px 28px #229955, 29px 29px #229955, 30px 30px #229955, 31px 31px #229955, 32px 32px #229955, 33px 33px #229955, 34px 34px #229955, 35px 35px #229955, 36px 36px #229955, 37px 37px #229955, 38px 38px #229955, 39px 39px #229955, 40px 40px #229955, 41px 41px #229955, 42px 42px #229955, 43px 43px #229955, 44px 44px #229955, 45px 45px #229955, 46px 46px #229955, 47px 47px #229955, 48px 48px #229955, 49px 49px #229955, 50px 50px #229955, 51px 51px #229955, 52px 52px #229955, 53px 53px #229955, 54px 54px #229955, 55px 55px #229955, 56px 56px #229955, 57px 57px #229955, 58px 58px #229955, 59px 59px #229955, 60px 60px #229955, 61px 61px #229955, 62px 62px #229955, 63px 63px #229955, 64px 64px #229955, 65px 65px #229955, 66px 66px #229955, 67px 67px #229955, 68px 68px #229955, 69px 69px #229955, 70px 70px #229955, 71px 71px #229955, 72px 72px #229955, 73px 73px #229955, 74px 74px #229955, 75px 75px #229955, 76px 76px #229955, 77px 77px #229955, 78px 78px #229955, 79px 79px #229955, 80px 80px #229955, 81px 81px #229955, 82px 82px #229955, 83px 83px #229955, 84px 84px #229955, 85px 85px #229955, 86px 86px #229955, 87px 87px #229955, 88px 88px #229955, 89px 89px #229955, 90px 90px #229955, 91px 91px #229955, 92px 92px #229955, 93px 93px #229955, 94px 94px #229955, 95px 95px #229955, 96px 96px #229955, 97px 97px #229955, 98px 98px #229955, 99px 99px #229955, 100px 100px #229955, 101px 101px #229955, 102px 102px #229955, 103px 103px #229955, 104px 104px #229955, 105px 105px #229955, 106px 106px #229955, 107px 107px #229955, 108px 108px #229955, 109px 109px #229955, 110px 110px #229955, 111px 111px #229955, 112px 112px #229955, 113px 113px #229955, 114px 114px #229955, 115px 115px #229955, 116px 116px #229955, 117px 117px #229955, 118px 118px #229955, 119px 119px #229955, 120px 120px #229955, 121px 121px #229955, 122px 122px #229955, 123px 123px #229955, 124px 124px #229955, 125px 125px #229955, 126px 126px #229955, 127px 127px #229955, 128px 128px #229955, 129px 129px #229955, 130px 130px #229955, 131px 131px #229955, 132px 132px #229955, 133px 133px #229955, 134px 134px #229955, 135px 135px #229955, 136px 136px #229955, 137px 137px #229955, 138px 138px #229955, 139px 139px #229955, 140px 140px #229955, 141px 141px #229955, 142px 142px #229955, 143px 143px #229955, 144px 144px #229955, 145px 145px #229955, 146px 146px #229955, 147px 147px #229955, 148px 148px #229955, 149px 149px #229955, 150px 150px #229955, 151px 151px #229955, 152px 152px #229955, 153px 153px #229955, 154px 154px #229955, 155px 155px #229955, 156px 156px #229955, 157px 157px #229955, 158px 158px #229955, 159px 159px #229955, 160px 160px #229955, 161px 161px #229955, 162px 162px #229955, 163px 163px #229955, 164px 164px #229955, 165px 165px #229955, 166px 166px #229955, 167px 167px #229955, 168px 168px #229955, 169px 169px #229955, 170px 170px #229955, 171px 171px #229955, 172px 172px #229955, 173px 173px #229955, 174px 174px #229955, 175px 175px #229955, 176px 176px #229955, 177px 177px #229955, 178px 178px #229955, 179px 179px #229955, 180px 180px #229955, 181px 181px #229955, 182px 182px #229955, 183px 183px #229955, 184px 184px #229955, 185px 185px #229955, 186px 186px #229955, 187px 187px #229955, 188px 188px #229955, 189px 189px #229955, 190px 190px #229955, 191px 191px #229955, 192px 192px #229955, 193px 193px #229955, 194px 194px #229955, 195px 195px #229955, 196px 196px #229955, 197px 197px #229955, 198px 198px #229955, 199px 199px #229955, 200px 200px #229955;
-}
-#count-down div[data-interval-text="day"]:after, #count-down div[data-interval-text="hr"]:after, #count-down div[data-interval-text="min"]:after, #count-down div[data-interval-text="sec"]:after {
-  text-shadow: 0px 0px #1f884c, 1px 1px #1f884c, 2px 2px #1f884c, 3px 3px #1f884c, 4px 4px #1f884c, 5px 5px #1f884c, 6px 6px #1f884c, 7px 7px #1f884c, 8px 8px #1f884c, 9px 9px #1f884c, 10px 10px #1f884c, 11px 11px #1f884c, 12px 12px #1f884c, 13px 13px #1f884c, 14px 14px #1f884c, 15px 15px #1f884c, 16px 16px #1f884c, 17px 17px #1f884c, 18px 18px #1f884c, 19px 19px #1f884c, 20px 20px #1f884c, 21px 21px #1f884c, 22px 22px #1f884c, 23px 23px #1f884c, 24px 24px #1f884c, 25px 25px #1f884c, 26px 26px #1f884c, 27px 27px #1f884c, 28px 28px #1f884c, 29px 29px #1f884c, 30px 30px #1f884c, 31px 31px #1f884c, 32px 32px #1f884c, 33px 33px #1f884c, 34px 34px #1f884c, 35px 35px #1f884c, 36px 36px #1f884c, 37px 37px #1f884c, 38px 38px #1f884c, 39px 39px #1f884c, 40px 40px #1f884c, 41px 41px #1f884c, 42px 42px #1f884c, 43px 43px #1f884c, 44px 44px #1f884c, 45px 45px #1f884c, 46px 46px #1f884c, 47px 47px #1f884c, 48px 48px #1f884c, 49px 49px #1f884c, 50px 50px #1f884c, 51px 51px #1f884c, 52px 52px #1f884c, 53px 53px #1f884c, 54px 54px #1f884c, 55px 55px #1f884c, 56px 56px #1f884c, 57px 57px #1f884c, 58px 58px #1f884c, 59px 59px #1f884c, 60px 60px #1f884c, 61px 61px #1f884c, 62px 62px #1f884c, 63px 63px #1f884c, 64px 64px #1f884c, 65px 65px #1f884c, 66px 66px #1f884c, 67px 67px #1f884c, 68px 68px #1f884c, 69px 69px #1f884c, 70px 70px #1f884c, 71px 71px #1f884c, 72px 72px #1f884c, 73px 73px #1f884c, 74px 74px #1f884c, 75px 75px #1f884c, 76px 76px #1f884c, 77px 77px #1f884c, 78px 78px #1f884c, 79px 79px #1f884c, 80px 80px #1f884c, 81px 81px #1f884c, 82px 82px #1f884c, 83px 83px #1f884c, 84px 84px #1f884c, 85px 85px #1f884c, 86px 86px #1f884c, 87px 87px #1f884c, 88px 88px #1f884c, 89px 89px #1f884c, 90px 90px #1f884c, 91px 91px #1f884c, 92px 92px #1f884c, 93px 93px #1f884c, 94px 94px #1f884c, 95px 95px #1f884c, 96px 96px #1f884c, 97px 97px #1f884c, 98px 98px #1f884c, 99px 99px #1f884c, 100px 100px #1f884c, 101px 101px #1f884c, 102px 102px #1f884c, 103px 103px #1f884c, 104px 104px #1f884c, 105px 105px #1f884c, 106px 106px #1f884c, 107px 107px #1f884c, 108px 108px #1f884c, 109px 109px #1f884c, 110px 110px #1f884c, 111px 111px #1f884c, 112px 112px #1f884c, 113px 113px #1f884c, 114px 114px #1f884c, 115px 115px #1f884c, 116px 116px #1f884c, 117px 117px #1f884c, 118px 118px #1f884c, 119px 119px #1f884c, 120px 120px #1f884c, 121px 121px #1f884c, 122px 122px #1f884c, 123px 123px #1f884c, 124px 124px #1f884c, 125px 125px #1f884c, 126px 126px #1f884c, 127px 127px #1f884c, 128px 128px #1f884c, 129px 129px #1f884c, 130px 130px #1f884c, 131px 131px #1f884c, 132px 132px #1f884c, 133px 133px #1f884c, 134px 134px #1f884c, 135px 135px #1f884c, 136px 136px #1f884c, 137px 137px #1f884c, 138px 138px #1f884c, 139px 139px #1f884c, 140px 140px #1f884c, 141px 141px #1f884c, 142px 142px #1f884c, 143px 143px #1f884c, 144px 144px #1f884c, 145px 145px #1f884c, 146px 146px #1f884c, 147px 147px #1f884c, 148px 148px #1f884c, 149px 149px #1f884c, 150px 150px #1f884c, 151px 151px #1f884c, 152px 152px #1f884c, 153px 153px #1f884c, 154px 154px #1f884c, 155px 155px #1f884c, 156px 156px #1f884c, 157px 157px #1f884c, 158px 158px #1f884c, 159px 159px #1f884c, 160px 160px #1f884c, 161px 161px #1f884c, 162px 162px #1f884c, 163px 163px #1f884c, 164px 164px #1f884c, 165px 165px #1f884c, 166px 166px #1f884c, 167px 167px #1f884c, 168px 168px #1f884c, 169px 169px #1f884c, 170px 170px #1f884c, 171px 171px #1f884c, 172px 172px #1f884c, 173px 173px #1f884c, 174px 174px #1f884c, 175px 175px #1f884c, 176px 176px #1f884c, 177px 177px #1f884c, 178px 178px #1f884c, 179px 179px #1f884c, 180px 180px #1f884c, 181px 181px #1f884c, 182px 182px #1f884c, 183px 183px #1f884c, 184px 184px #1f884c, 185px 185px #1f884c, 186px 186px #1f884c, 187px 187px #1f884c, 188px 188px #1f884c, 189px 189px #1f884c, 190px 190px #1f884c, 191px 191px #1f884c, 192px 192px #1f884c, 193px 193px #1f884c, 194px 194px #1f884c, 195px 195px #1f884c, 196px 196px #1f884c, 197px 197px #1f884c, 198px 198px #1f884c, 199px 199px #1f884c, 200px 200px #1f884c;
+  @include transition(all 1s ease-in-out);
+  @include long-text-shadow(darken($blue, 6%));
+  &:after{
+   bottom: .1em;
+   font-size: .35em;
+   font-weight: normal;
+   left: 50%;
+   margin-left: -2em;
+   position: absolute;
+   width: 4em;
+   @include long-text-shadow(darken($blue, 10%));
+   @include transition(all 1s ease-in-out);
+  }
+  &[data-interval-text="day"], &[data-interval-text="hr"], &[data-interval-text="min"], &[data-interval-text="sec"]{
+   background: $green;
+   @include long-text-shadow(darken($green, 6%));
+   &:after{
+    @include long-text-shadow(darken($green, 10%));
+   }
+  }
+ }
 }
