@@ -3,10 +3,10 @@
 // Note: This code should be insterted into the bottom of the html document, you
 // can see where it should be written in the html by looking at the commented out code.
 $(document).ready(function() {
-  var current = new Date("june 13, 2023 08:00:00");
+  var current = new Date("june 13, 2023 14:00:00");
   
   ;[ 'Date', 'Hours', 'Minutes' ].forEach(function(val, i) {
-    current['set' + val](current['get' + val]() + (i + 1) * 3);
+    current['set' + val](current['get' + val]() + (i + 0) * 0);
   });
   
  
